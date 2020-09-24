@@ -1,0 +1,95 @@
+body{
+    background: url("fondo.jpg");
+    background-size: auto  100%  ;
+    min-width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    }
+    .perfil2img{
+        margin: -8%;
+        margin-left: 59%;
+        width: 23%;
+        padding-top: 74%;
+
+    }
+.perfil2-container-1{
+    position: absolute;
+    max-width: 160%;
+    min-width: 560%;
+    min-height: 800%;
+    box-sizing: content-box;
+    background-color: rgba(68, 66, 66, 0.493);
+    left: 50%;
+    top: 50%;
+    padding: 1%;
+    font-weight: bold;
+    color: #444444;
+    overflow: hidden;
+    display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translate(-50% ,-50%);
+}
+.perfil2-container-2{
+    position: absolute;
+    max-width: 52%;
+    min-width: 51%;
+    min-height: 28%;
+    box-sizing: content-box;
+    background-color: rgba(247, 235, 235, 0.397);
+    left: 71%;
+    top: 63%;
+    padding: 1%;
+    font-weight: bold;
+    color: #444444;
+    overflow: hidden;
+    display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      transform: translate(-50% ,-50%);
+    }
+
+    
+        .nombredeusuario_perfil2{
+            left: 39%;
+            padding: 13% 7%;
+            position: relative;
+            max-width: 50%;
+            text-align: center;
+              font-size: 545%;
+            font-weight: bold;
+            color: #ffffff;
+            overflow: hidden;
+            display: flex;
+              flex-direction: column;
+              justify-content: center;
+            }
+      
+           
+                .content_perfil2-text1{
+                    font-weight: normal;
+                    background-color: rgba(0, 0, 0, 0.692);
+                    position: absolute;
+                min-width: 40%;
+                min-height: 7%;
+                box-sizing: content-box;
+                background-color: rgba(0, 0, 0, 0.692);
+                left: 71%;
+                top: 70%;
+                padding: 0% 5% ;
+                font-size: 430%;
+                color: #ffffff;
+                border-style: none;
+                overflow: hidden;
+                display: inline-flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  transform: translate(-50% ,-50%);
+                }
+          
+           

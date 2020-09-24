@@ -1,0 +1,13 @@
+.title-container label {
+        position: relative;
+        max-width: 300px;
+        text-align: center;
+        box-sizing: content-box;
+          font-size: 25px;
+        font-weight: bold;
+        color: #444444;
+        overflow: hidden;
+        display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }

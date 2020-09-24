@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>BUMPY ROADS</title>
+  
+  <link rel="stylesheet" href="CSS/Estilo.css">
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+  <link rel="shortcut icon" href="BUMPY ROADS LOGUITO.png" type="image/PNG">
+
+
+  <script src="JS/jquery-3.5.1.min.js"></script>
+  <script src="JS/bootstrap.min.js"></script>
+
+  <script src="JS/index.js"></script>
+  
+  <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.16/"></script>
+  
+</head>
+<link
+  rel="stylesheet"
+  href="https://js.arcgis.com/4.16/esri/themes/light/main.css"
+/>
+<script src="https://js.arcgis.com/4.16/"></script>
+<style>
+  /* ADD */
+  .esri-view .esri-directions {
+    position: fixed;
+    right: 15px;
+    visibility: collapse;
+  }
+  .esri-view .esri-component.esri-attribution {
+    position: fixed;
+  }
+</style>
+<script>
+  require([
+    "esri/widgets/Track",
+    "esri/views/MapView",
+    "esri/Map",
+    "esri/widgets/Directions",
+    "esri/symbols/SimpleMarkerSymbol",
+    "esri/tasks/RouteTask",
+      "esri/tasks/support/RouteParameters",
+      "esri/tasks/support/FeatureSet",
+      "esri/Graphic",
+      "esri/widgets/Compass"
+  ], function (Track, MapView, Map, Directions, SimpleMarkerSymbol, RouteTask, RouteParameters, FeatureSet, Graphic, Compass) {
+    var map = new Map({
+        //*** UPDATE ***//
+        basemap: "streets-navigation-vector"
+      });
+
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        //*** ADD ***//
+        center: [-118.24532,34.05398],
+        zoom: 12,
+        padding: {
+          right: 320
+        }
+      });
+
+    // Create an instance of the Track widget
+    // and add it to the view's UI
+    var track = new Track({
+      view: view
+    });
+    view.ui.add(track, "top-left");
+
+    // The sample will start tracking your location
+    // once the view becomes ready
+    view.when(function () {
+      track.start();
+    });
+    
+    var directions = new Directions({
+        view: view,
+        routeServiceUrl: "https://utility.arcgis.com/usrsvcs/appservices/Wwt6XPcc8Kt8QLYe/rest/services/World/Route/NAServer/Route_World"
+      });
+      view.ui.add(directions, "top-right");
+
+      function createStopSymbol(color, size) {
+          return new SimpleMarkerSymbol({
+            style: "simple-marker",
+            size: size,
+            outline: {
+              width: "2px",
+              color: "white"
+            },
+            color: color
+          });
+        }
+
+        // Stop symbols
+        directions.stopSymbols.first = createStopSymbol("green","14px");
+        directions.stopSymbols.middle = createStopSymbol("black","10px");
+        directions.stopSymbols.last = createStopSymbol("red","14px");
+
+        // Route symbol
+        directions.routeSymbol.width = "2";
+        directions.routeSymbol.color = [0, 0, 0, 0.75];
+        directions.routeSymbol.style = "short-dot";
+
+        
+        var routeTask = new RouteTask({
+         url: "https://utility.arcgis.com/usrsvcs/appservices/Wwt6XPcc8Kt8QLYe/rest/services/World/Route/NAServer/Route_World"
+      });
+      view.on("click", function(event){
+        if (view.graphics.length === 0) {
+          addGraphic("start", event.mapPoint);
+        } else if (view.graphics.length === 1) {
+          addGraphic("finish", event.mapPoint);
+          //*** ADD ***//
+          getRoute();
+        } else {
+          view.graphics.removeAll();
+          addGraphic("start",event.mapPoint);
+        }
+      });
+
+      function addGraphic(type, point) {
+        var graphic = new Graphic({
+          symbol: {
+            type: "simple-marker",
+            color: (type === "start") ? "white" : "black",
+            size: "8px"
+          },
+          geometry: point
+        });
+        view.graphics.add(graphic);
+      }
+
+      function getRoute() {
+        // Setup the route parameters
+        var routeParams = new RouteParameters({
+          stops: new FeatureSet({
+            features: view.graphics.toArray() // Pass the array of graphics
+          }),
+          returnDirections: true
+        });
+        // Get the route
+        routeTask.solve(routeParams).then(function(data) {
+          // Display the route
+          data.routeResults.forEach(function(result) {
+            result.route.symbol = {
+              type: "simple-line",
+              color: [5, 150, 255],
+              width: 3
+            };
+            view.graphics.add(result.route);
+          });
+        });
+      }
+      var compass = new Compass({
+          view: view
+        });
+
+        // adds the compass to the top left corner of the MapView
+        view.ui.add(compass, "top-left");
+  });
+</script>
+</head>
+
+<body>
+  <div id="Encabezado">BUMPY ROADS</div> 
+  <div id="viewDiv"></div>
+  <nav class="navbar navbar-expand bg-light navbar-light fixed-bottom" role="navigation">
+
+    <div class="nav navbar-header ">
+
+      <ul class="navbar-nav navbar-center" id="Driving">
+        <li class="nav-item" >
+          <img src="imagenes/Modo-Conduccion.png" alt="">
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-center" onclick="geoFindMe_2()">
+        <li class="nav-item">
+          <img src="imagenes/Modo-Exploracion.png" alt="">
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-center" onclick="posicionar_TopNav_Alcance()">
+        <li class="nav-item">
+          <img src="imagenes/Perfil.png" alt="">
+        </li>
+      </ul>
+      </ul>
+    </div>
+  </nav>
+
+
+</body>
+
+</html>

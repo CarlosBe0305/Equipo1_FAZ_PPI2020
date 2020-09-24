@@ -1,0 +1,35 @@
+.input-error {
+    background: rosybrown;
+    margin-bottom: 10px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    color: red; 
+    border-style: hidden;
+    border-radius: 15px ;
+    border: 1px solid red;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1em; 
+    font-weight: bold;
+}
+
+.input-error::placeholder{
+    color: red;
+
+
+}
+.regular-style {
+    background: rgb(240, 237, 237);
+    margin-bottom: 10px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    color: #999da0; 
+    border-style: hidden;
+    border-radius: 15px ;
+    border-color: #9c9a9af1 ;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 1em; 
+    font-weight: bold;}

@@ -1,0 +1,120 @@
+body{
+  
+  background: url('/m.png') ;
+  background-size: auto 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding: 15px;
+  margin: 15px;
+  height: 100%;
+  }
+.IniciaSesion{
+  position: relative;
+  max-width: 300px;
+  text-align: center;
+  box-sizing: content-box;
+    font-size: 25px;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .login-container::before{
+    content: '     ';
+    position: relative;
+    top: 38px;
+    display: block;
+    width: 280px;
+    height: 1px;
+    background: rgb(209, 209, 209);
+    box-sizing: border-box;
+}
+
+.login-container{
+  position: absolute;
+  max-width: 300px;
+  min-width: 260px;
+  box-sizing: content-box;
+  background-color: rgba(0, 0, 0, 0.404);
+  left: 50%;
+  top: 50%;
+  padding: 5%;
+  font-weight: bold;
+  color:white;
+  overflow: hidden;
+  display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translate(-50% ,-50%);
+  }
+.Content-label-input-button{
+  padding: 5%;
+  }
+  .submit-button{
+    background-color: #6B92A4;
+    color: whitesmoke;
+    border:0;
+    border-radius: 15px;
+    display: block;
+    margin: 15px auto; 
+    padding: 15px 45px;
+    width: 80%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease;
+      
+  }
+  .label-error{
+    font-weight: normal;
+    font-size: 10px;
+    border: 1px solid red;
+    color: red;
+    background: rosybrown;
+    border-style: hidden;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+      
+  }
+  .label-alert{
+    font-weight: normal;
+    font-size: 10px;
+    border: 1px solid red;
+    color: red;
+    background: rosybrown;
+    border-style: hidden;
+    padding: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    margin-top: 10px;
+      
+  }
+  
+  .button1{
+    float:
+    right;
+    background-color: #6b92a4;
+    color: whitesmoke;
+    border:0;
+    border-radius: 15px;
+    display: block;
+    margin: 5px auto; 
+    padding: 15px 45px;
+    width: 80%;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease;
+    
+  }
+ 
