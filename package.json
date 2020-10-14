@@ -1,10 +1,11 @@
 {
-  "name": "bumpy-roads-webapp",
+  "name": "app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.5.2",
     "cra-template": "1.0.3",
+    "esri-loader": "^2.15.0",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
@@ -33,7 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "keywords": [],
-  "description": ""
+  }
 }

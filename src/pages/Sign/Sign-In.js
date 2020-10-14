@@ -58,7 +58,7 @@ const Login = () => {
 
 
     <div>
-      { isLogin ? <Redirect to="/Perfil" /> :
+      { isLogin ? <Redirect to="/Home" /> :
 
         <div className="login-container">
           <label className="IniciaSesion">Inicia Sesión</label>
@@ -99,7 +99,7 @@ const Login = () => {
               <label className='label-error'>
                 Contraseña invalida o incompleta
             </label>}
-            <div className='submit-button-container'>
+            <div classname='submit-button-container'>
               <button onClick={handleSubmit} className="submit-button">
                 Iniciar Sesión
             </button>
