@@ -15,3 +15,4 @@ mysqlConnection.connect(function (err) {
     console.log('base de datos conectada!');
   }
 });
+module.exports = mysqlConnection;
