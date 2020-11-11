@@ -73,14 +73,14 @@ router.post('/nuevo-bache', (req, res) => {
 });
 
 router.post('/nueva-notificacion', (req, res) => {
-  const { ID, ID_Usuario, Latitude, Longitude, Nivel_Gravedad, Velocidad, ValorX_Acel, ValorY_Acel, ValorZ_Acel } = req.body;
-  let bache = [ID, ID_Usuario, Latitude, Longitude, Nivel_Gravedad, Velocidad, ValorX_Acel, ValorY_Acel, ValorZ_Acel];
-  let nuevobache = `INSERT INTO Baches(ID,ID_Usuario, Latitude,Longitude,Nivel_Gravedad,Velocidad,ValorX_Acel,ValorY_Acel,ValorZ_Acel) VALUES(?,?,?,?,?,?,?,?,?)`;
-  mysqlConnection.query(nuevobache, bache, (err, results, fields) => {
+  const { ID, ID_Usuario, ID_Bache, Latitude, Longitude, Mensaje } = req.body;
+  let notificacion = [ID, ID_Usuario, ID_Bache, Latitude, Longitude, Mensaje];
+  let nuevanotificacion = `INSERT INTO Notificaciones(ID, ID_Usuario, ID_Bache, Latitude, Longitude, Mensaje) VALUES(?,?,?,?,?,?)`;
+  mysqlConnection.query(nuevanotificacion, notificacion, (err, results, fields) => {
     if (err) {
       return console.error(err.mesage);
     }
-    res.json({ message: `Bache registrado`, })
+    res.json({ message: `Notificación registrada`, })
   });
 });
 
