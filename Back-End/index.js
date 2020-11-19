@@ -11,8 +11,6 @@ app.set('port',3000);
 app.use(express.json());
 
 
-
-app.use('/api',routes);
 app.use('/api/baches',baches);
 app.use('/api/notificaciones',notificaciones);
 app.use('/api/usuarios',usuarios);
