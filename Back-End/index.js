@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const routes = require('./routes/routes.js');
+
 const baches = require('./routes/baches')
 const notificaciones = require('./routes/notificaciones')
 const usuarios = require('./routes/usuarios')
