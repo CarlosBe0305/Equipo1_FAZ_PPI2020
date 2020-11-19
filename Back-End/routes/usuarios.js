@@ -12,6 +12,17 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/:ID', (req, res) => {
+    const { ID } = req.params;
+    mysqlConnection.query('DELETE FROM Usuarios WHERE ID = ?', [ID], (err, rows, fields) => {
+      if (!err) {
+        res.json({ status: 'Usuario eliminado' });
+      } else {
+        console.log(err);
+      }
+    });
+  });
+
 router.put('/:ID', (req, res) => {
   const { UserName, Correo, Telefono } = req.body;
   const { ID } = req.params;
