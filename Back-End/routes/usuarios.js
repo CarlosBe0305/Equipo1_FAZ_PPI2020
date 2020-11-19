@@ -14,9 +14,9 @@ router.get('/', (req, res) => {
 
 router.get('/:ID', (req, res) => {
     const { ID } = req.params;
-    mysqlConnection.query('DELETE FROM Usuarios WHERE ID = ?', [ID], (err, rows, fields) => {
+    mysqlConnection.query('SELECT * FROM Usuarios WHERE ID = ?', [ID], (err, rows, fields) => {
       if (!err) {
-        res.json({ status: 'Usuario eliminado' });
+        res.json(rows[0]);
       } else {
         console.log(err);
       }
