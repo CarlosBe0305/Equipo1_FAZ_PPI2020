@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React from 'react';
 import Route from 'react-router-dom/Route'
 import SignUp from './pages/Sign/Sign-Up'
