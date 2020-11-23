@@ -15,7 +15,21 @@ router.get('/', (req, res) => {
   
   
   router.post('/nuevo', (req, res) => {
-    const { ID, ID_Usuario, Latitude, Longitude, Nivel_Gravedad, Velocidad, ValorX_Acel, ValorY_Acel, ValorZ_Acel } = req.body;
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(mostrarUbicacion);
+    }
+    
+    function mostrarUbicacionLat (ubicacion) {
+      const lat = ubicacion.coords.latitude;
+      return lat;
+    }
+    function mostrarUbicacionLon (ubicacion) {
+      const lng = ubicacion.coords.longitude;
+      return lng;
+    }
+    const { ID, ID_Usuario, Nivel_Gravedad, Velocidad, ValorX_Acel, ValorY_Acel, ValorZ_Acel } = req.body;
+    const {Latitude}= mostrarUbicacionLat;
+    const {Longitude}= mostrarUbicacionLon;
     let bache = [ID, ID_Usuario, Latitude, Longitude, Nivel_Gravedad, Velocidad, ValorX_Acel, ValorY_Acel, ValorZ_Acel];
     let nuevobache = `INSERT INTO Baches(ID,ID_Usuario, Latitude,Longitude,Nivel_Gravedad,Velocidad,ValorX_Acel,ValorY_Acel,ValorZ_Acel) VALUES(?,?,?,?,?,?,?,?,?)`;
     mysqlConnection.query(nuevobache, bache, (err, results, fields) => {
