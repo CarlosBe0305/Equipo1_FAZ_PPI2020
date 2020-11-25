@@ -99,6 +99,8 @@ const Login = () => {
               <label className='label-error'>
                 Contraseña invalida o incompleta
             </label>}
+             <Link className="link-11">¿Olvidaste tu contraseña?</Link>
+
             <div classname='submit-button-container'>
               <button onClick={handleSubmit} className="submit-button">
                 Iniciar Sesión
