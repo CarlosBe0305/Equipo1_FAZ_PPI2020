@@ -48,15 +48,16 @@ router.delete('/usuarios/:id', (req, res) => {
 });
 
 router.post('/usuarios', (req, res) => {
-  const { ID, UserName, Correo, Telefono } = req.body;
-  let usuario = [ID, UserName, Correo, Telefono];
-  //let nuevousuario = `INSERT INTO Usuarios(ID,UserName,Correo,Telefono) VALUES(?,?,?,?)`;
-  // mysqlConnection.query(nuevousuario, usuario, (err, results, fields) => {
-  //   if (err) {
-  //     return console.error(err.mesage);
-  //   }
-  //   res.json({ message: `Usuario registrado`, })
-  // });
+  // console.log(req.body)
+  const { nombredeusuario, nombre, telefono,correo, contraseña } = req.body;
+  let usuario = [nombredeusuario, nombre, telefono, correo, contraseña];
+  let nuevousuario = `INSERT INTO Usuarios(UserName, Nombre, Telefono, Correo, Contraseña) VALUES(?,?,?,?,?)`;
+  mysqlConnection.query(nuevousuario, usuario, (err, results, fields) => {
+    if (err) {
+      console.log(err.message);
+    }
+    return res.json({ message: 'Usuario registrado'})
+  });
 });
 
 module.exports = router;

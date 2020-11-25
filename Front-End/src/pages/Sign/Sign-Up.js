@@ -12,7 +12,6 @@ const Registro = () => {
     nombredeusuario:'',
     nombre: '',
     telefono:'',
-    apellidos: '',
     correo: '',
     contraseña: ''
   }
@@ -21,6 +20,14 @@ const Registro = () => {
 
   function submitData(e){
     e.preventDefault()
+    fetch('http://localhost:3000/api/usuarios', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(users)
+    })
+    window.location.href = 'http://localhost:3001/Home'
     console.log('Se enviaron los datos')
   }
 
@@ -59,16 +66,6 @@ const Registro = () => {
 
         <div>
       <input 
-            name='apellidos'
-            placeholder="Apellidos"
-            type="text"
-            className='regular-style'
-            onChange={(e) => handlerChange(e)}
-            />
-        </div>
-
-        <div>
-      <input 
             name='telefono'
             placeholder="Telefono"
             type="text"
@@ -91,7 +88,7 @@ const Registro = () => {
       <input 
             name='contraseña'
             placeholder="Contraseña"
-            type="text"
+            type="password"
             className='regular-style'
             onChange={(e) => handlerChange(e)}
             />

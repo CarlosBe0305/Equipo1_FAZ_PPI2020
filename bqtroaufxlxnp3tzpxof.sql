@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `Notificaciones` (
 
 DROP TABLE IF EXISTS `Usuarios`;
 CREATE TABLE IF NOT EXISTS `Usuarios` (
-  `ID` int(11) NOT NULL,
+  `ID` int(11) NOT NULL ,
   `UserName` text NOT NULL,
   `Correo` text NOT NULL,
   `Telefono` int(10) NOT NULL

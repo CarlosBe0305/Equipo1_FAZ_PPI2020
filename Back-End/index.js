@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/baches',baches);
 app.use('/api/notificaciones',notificaciones);
-app.use('/api/',usuarios);
+app.use('/api',usuarios);
 app.listen(app.get('port'), ()=>{
   console.log(`Servidor corriendo en el puerto ${app.get('port')}`);
 });
