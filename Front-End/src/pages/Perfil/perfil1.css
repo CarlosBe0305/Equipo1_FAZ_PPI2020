@@ -11,12 +11,12 @@ body{
     
         .perfil1-titulo{
 
-            left: 15px;
-            padding: 13% 7%;
             position: relative;
-            max-width: 300px;
+            min-width: 260px;
             text-align: center;
-              font-size: 25px;
+              font-size: 30px;
+              padding-top: 40px;
+            padding-left: 10px;
             font-weight: bold;
             color: #444444;
             overflow: hidden;
@@ -31,17 +31,6 @@ body{
                 padding-top: 22%;
 
             }
-            .perfil1-container-1::before{
-              content: '     ';
-              position: relative;
-              top: 388px;
-              left: 25px;
-              display: block;
-              width: 300px;
-              height: 1px;
-              background: rgb(180, 180, 180);
-              box-sizing: border-box;
-          }
           
           .perfil1-content1{
             position: absolute;
@@ -96,7 +85,7 @@ body{
                 }
                 .perfil1-tuactividad{
                     left: -25%;
-            padding:  60% 8%;
+            padding:  72% 8%;
             position: relative;
             max-width: 300px;
             text-align: center;
@@ -148,6 +137,11 @@ body{
               visibility: visible;
               transition: all .3s ease;
                 
+            }
+            .link-1{
+              color: rgb(255, 255, 255);
+              text-decoration-color: rgb(255, 255, 255);
+              text-decoration-style: none;
             }
 
          
