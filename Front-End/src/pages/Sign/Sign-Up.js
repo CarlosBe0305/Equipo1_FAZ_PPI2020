@@ -20,14 +20,14 @@ const Registro = () => {
 
   function submitData(e){
     e.preventDefault()
-    fetch('http://localhost:3000/api/usuarios', {
+    fetch('http://localhost:3001/api/usuarios', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(users)
     })
-    window.location.href = 'http://localhost:3001/Home'
+    window.location.href = 'http://localhost:3000/Home'
     console.log('Se enviaron los datos')
   }
 

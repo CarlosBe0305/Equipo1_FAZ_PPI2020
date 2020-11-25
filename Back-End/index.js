@@ -6,7 +6,7 @@ const baches = require('./routes/baches')
 const notificaciones = require('./routes/notificaciones')
 const usuarios = require('./routes/usuarios')
 
-app.set('port',3000);
+app.set('port',3001);
 
 // Middlewares
 app.use(cors())
