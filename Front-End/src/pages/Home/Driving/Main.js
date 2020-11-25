@@ -3,7 +3,7 @@ import './Main.css';
 import './Components/title/title'
 import './Components/header/header'
 import Navbar from "./Components/Navbar/Navbar"
-import Notification from "./Components/Notification 1/Notification"
+
 import Header from "./Components/header/header"
 import WebMapView from './Components/Map/Map'
 
@@ -33,7 +33,7 @@ class Main extends React.Component {
   render() {
     return (
     <div className="container">
-      <Notification/>
+      
       <Header text='BUMPY ROADS'/>
       <div className="webmap"><WebMapView/></div>
       

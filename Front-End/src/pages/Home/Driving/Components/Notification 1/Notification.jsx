@@ -1,26 +1,40 @@
-import React from "react";
+import {React, useState} from "react";
+
 import './Notification.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink, withRouter } from 'react-router-dom'
+import { Button, Modal } from 'react-bootstrap';
 
-class Notification extends React.Component {
+function Notification() {
+  const [show, setShow] = useState(false);
 
-  render() {
-    return (
-      <div className="Not">
-        <div className="Notification">
-          <label className='label-notificacion_1'>
-            ¡Cuidado! En 100 metros te encontrarás un bache
-   </label>
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-<br/>
-          <div className='div-notificacion_1'>
-            <img src="imagenes/microfono.PNG" />
-          </div>
-        </div>
-      </div>
-    )
+  return (
+    <>
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+    );
   }
-};
-Notification = withRouter(Notification);
-export default Notification;
+
+
+  render(<Notification />);
+  
