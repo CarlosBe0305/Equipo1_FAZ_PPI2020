@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Sign-Up.css';
+import './Components-Sign-Up/Input/Input.css';
 
 import Title from './Components-Sign-Up/Title/Title';
 import Input from './Components-Sign-Up/Input/Input';
@@ -7,50 +8,26 @@ import InputR from './Components-Sign-Up/Input/InputR';
 
 import {Link} from 'react-router-dom'
 const Registro = () => {
-
-  const [user, setUser] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
-  const [isRegistro, setIsRegistro] = useState(false);
-  const [hasError, setHasError] = useState(false);
-
-  function handleChange(name, value) {
-    if (name === 'nombredeusuario') {
-      setUser(value)
-    } else {
-      if (value.length < 6) {
-        setPasswordError(true);
-      } else {
-        setPasswordError(false);
-        setPassword(value);
-      }
-    }
-  };
-
-  function ifMatch(param) {
-    if (param.user.length > 0 && param.password.length > 0) {
-      if (user === 'katherine' && param.password === '123456') {
-        const { user, password } = param;
-        let ac = { user, password };
-        let account = JSON.stringify(ac);
-        localStorage.setItem('account', account);
-        setIsRegistro(true);
-      } else {
-        setIsRegistro(false);
-        setHasError(true);
-      }
-    } else {
-      setIsRegistro(false);
-    }
+  const initialState = {
+    nombredeusuario:'',
+    nombre: '',
+    telefono:'',
+    apellidos: '',
+    correo: '',
+    contraseña: ''
   }
 
-  function handleSumit() {
-    let account = { user, password }
-    if (account) {
-      ifMatch(account);
-    }
-  };
+  const [users, setUsers] = useState(initialState)
 
+  function submitData(e){
+    e.preventDefault()
+    console.log('Se enviaron los datos')
+  }
+
+  function handlerChange(e){
+    // console.log(e.target.value)
+    setUsers({...users, [e.target.name] : e.target.value})
+  }
 
   return (
     <div className='login-container'>
@@ -58,79 +35,72 @@ const Registro = () => {
       <Title text='Registrarse' />
       <br />
 
-      {hasError &&
-        <label className='label-alert'>
-          Por el momento no se pueden crear nuevos usuarios, ya que no contamos con una base de datos.
-   </label>}
+    <form onSubmit={submitData}>
 
-      <Input
-        attribute={{
-          id: 'nombredeusuario',
-          name: 'nombredeusuario',
-          type: 'text',
-          placeholder: ' Nombre de usuario'
-        }}
-        handleChange={handleChange}
-      />
+   <div>
+      <input 
+            name='nombredeusuario'
+            placeholder="Nombre de usuario"
+            type="text"
+            className='regular-style'
+            onChange={(e) => handlerChange(e)}
+            />
+        </div>
 
-      <InputR
-        attribute={{
-          id: 'nombre',
-          name: 'nombre',
-          type: 'text',
-          placeholder: ' Nombre'
-        }}
-      />
+        <div>
+      <input 
+            name='nombre'
+            placeholder="Nombre"
+            type="text"
+            className='regular-style'
+            onChange={(e) => handlerChange(e)}
+            />
+        </div>
 
-      <InputR
-        attribute={{
-          id: 'apellido',
-          name: 'apellido',
-          type: 'text',
-          placeholder: ' Apellido'
-        }}
+        <div>
+      <input 
+            name='apellidos'
+            placeholder="Apellidos"
+            type="text"
+            className='regular-style'
+            onChange={(e) => handlerChange(e)}
+            />
+        </div>
 
-      />
+        <div>
+      <input 
+            name='telefono'
+            placeholder="Telefono"
+            type="text"
+            className= 'regular-style'
+            onChange={(e) => handlerChange(e)}
+            />
+        </div>
 
-      <InputR
-        attribute={{
-          id: 'correo',
-          name: 'apellido',
-          type: 'email',
-          placeholder: ' Correo electronico'
-        }}
+        <div>
+      <input 
+            name='correo'
+            placeholder="Correo"
+            type="text"
+            className='regular-style'
+            onChange={(e) => handlerChange(e)}
+            />
+        </div>
+        <div>
 
-      />
+      <input 
+            name='contraseña'
+            placeholder="Contraseña"
+            type="text"
+            className='regular-style'
+            onChange={(e) => handlerChange(e)}
+            />
+        </div>
 
-      <InputR
-        attribute={{
-          id: 'telefono',
-          name: 'telefono',
-          type: 'tel',
-          placeholder: ' Telefono Celular'
-        }}
-      />
-
-      <Input
-        attribute={{
-          id: 'contrañesa',
-          name: 'contraseña',
-          type: 'password',
-          placeholder: ' Contraseña'
-        }}
-        handleChange={handleChange}
-        param={passwordError}
-      />
-
-      {passwordError &&
-        <label className='label-error'>
-          contraseña incompleta
-      </label>}
-
-      <button className='boton1' onClick={handleSumit}>
+      <button type='submit' className='boton1'>
         INICIAR
       </button>
-
+      </form>
       ¿Ya tienes una cuenta? <Link to="/Sign-In" className="link">Inicia Sesión</Link>
       
     </div>
