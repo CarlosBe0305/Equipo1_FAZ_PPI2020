@@ -3,7 +3,7 @@ const router = express.Router();
 const mysqlConnection = require('../db/db');
 
 
-router.get('/', (req, res) => {
+router.get('/baches', (req, res) => {
     mysqlConnection.query('SELECT * FROM Baches', (err, rows, fields) => {
       if (!err) {
         res.json(rows);
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   });
   
   
-  router.post('/nuevo', (req, res) => {
+  router.post('/baches', (req, res) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(mostrarUbicacion);
     }
