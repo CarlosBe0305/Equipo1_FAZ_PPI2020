@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mysqlConnection = require('../db/db');
 
-router.get('/', (req, res) => {
+router.get('/usuarios', (req, res) => {
   mysqlConnection.query('SELECT * FROM Usuarios', (err, rows, fields) => {
     if (!err) {
       res.json(rows);
@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/:ID', (req, res) => {
-    const { ID } = req.params;
-    mysqlConnection.query('SELECT * FROM Usuarios WHERE ID = ?', [ID], (err, rows, fields) => {
+router.get('/usuarios/:id', (req, res) => {
+    const { id } = req.params;
+    mysqlConnection.query('SELECT * FROM Usuarios WHERE ID = ?', [id], (err, rows, fields) => {
       if (!err) {
         res.json(rows[0]);
       } else {
@@ -23,10 +23,10 @@ router.get('/:ID', (req, res) => {
     });
   });
 
-router.put('/:ID', (req, res) => {
+router.put('/usuarios/:id', (req, res) => {
   const { UserName, Correo, Telefono } = req.body;
-  const { ID } = req.params;
-  mysqlConnection.query(`UPDATE Usuarios SET UserName = ?,Correo = ?,Telefono = ? WHERE ID = ?`, [UserName, Correo, Telefono, ID],
+  const { id } = req.params;
+  mysqlConnection.query(`UPDATE Usuarios SET UserName = ?,Correo = ?,Telefono = ? WHERE ID = ?`, [UserName, Correo, Telefono, id],
     (err, rows, fields) => {
       if (!err) {
         res.json({ status: 'Usuario actualizado' });
@@ -36,9 +36,9 @@ router.put('/:ID', (req, res) => {
     });
 });
 
-router.delete('/:ID', (req, res) => {
-  const { ID } = req.params;
-  mysqlConnection.query('DELETE FROM Usuarios WHERE ID = ?', [ID], (err, rows, fields) => {
+router.delete('/usuarios/:id', (req, res) => {
+  const { id } = req.params;
+  mysqlConnection.query('DELETE FROM Usuarios WHERE ID = ?', [id], (err, rows, fields) => {
     if (!err) {
       res.json({ status: 'Usuario eliminado' });
     } else {
@@ -47,15 +47,16 @@ router.delete('/:ID', (req, res) => {
   });
 });
 
-router.post('/nuevo', (req, res) => {
-  const { ID, UserName, Correo, Telefono } = req.body;
-  let usuario = [ID, UserName, Correo, Telefono];
-  let nuevousuario = `INSERT INTO Usuarios(ID,UserName,Correo,Telefono) VALUES(?,?,?,?)`;
+router.post('/usuarios', (req, res) => {
+  // console.log(req.body)
+  const { nombredeusuario, nombre, telefono,correo, contraseña } = req.body;
+  let usuario = [nombredeusuario, nombre, telefono, correo, contraseña];
+  let nuevousuario = `INSERT INTO Usuarios(UserName, Nombre, Telefono, Correo, Contraseña) VALUES(?,?,?,?,?)`;
   mysqlConnection.query(nuevousuario, usuario, (err, results, fields) => {
     if (err) {
-      return console.error(err.mesage);
+      console.log(err.message);
     }
-    res.json({ message: `Usuario registrado`, })
+    return res.json({ message: 'Usuario registrado'})
   });
 });
 

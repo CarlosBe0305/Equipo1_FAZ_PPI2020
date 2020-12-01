@@ -17,12 +17,14 @@ const Perfil1 = () => {
         <label className="perfil1-content1-text2"><Link to="/Edit-Perfil" className="link">Ver Perfil</Link></label>
         
       </div>
-
+      
       <div className="perfil1-content2">
         <br></br>
         <label className="perfil1-content2-text1">Información personal</label>
         <br></br>
       </div>
+
+
       <label className="perfil1-tuactividad">Tu Actividad</label>
 
       <div className="perfil1-content3">
@@ -33,7 +35,7 @@ const Perfil1 = () => {
                               <br></br>
                (todavia no has hecho ninguna busqueda)
           </label>
-        <button className="perfil1-button">Comienza a explorar</button>
+        <button className="perfil1-button"> <Link to="/Home" className="link-1">Comienza a explora</Link></button>
       </div>
 
     </div>
